@@ -20,7 +20,7 @@ jobs:
     if: github.event.repository.owner.id == github.event.sender.id  # When you click Star to the warehouse, trigger the Github Action to run
     steps:
     - name: Checkout
-      uses: actions/checkout@master
+      uses: actions/checkout@main
     - name: Set up Python  
       uses: actions/setup-python@v1
       with:
@@ -41,6 +41,6 @@ jobs:
         git add .
         git commit -m "Successfully Wake" -a
     - name: Push changes
-      uses: ad-m/github-push-action@master
+      uses: ad-m/github-push-action@main
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
