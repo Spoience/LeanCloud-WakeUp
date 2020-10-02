@@ -1,5 +1,5 @@
 # LeanCloud cloud engine automatically wakes up
-name: AutoWakeUpLeanCLoud
+name: LeanCloud-WakeUp
 
 on: 
   release:
