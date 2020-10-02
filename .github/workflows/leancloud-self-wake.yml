@@ -1,13 +1,13 @@
 name: 'LeanCloud Self Wake'
 
- # 触发条件
+ # Triggering conditions
 on:
   push:
   watch:
     types: [started]
   schedule:
-    - cron: '*/29 23-23 * * ?'    # 北京时间 7:00 - 7:59，每 29 分钟触发一次
-    - cron: '*/29 0-15 * * ?'     # 北京时间 8:00 - 23:59，每 29 分钟触发一次
+    - cron: '*/29 23-23 * * ?'    # 7:00-7:59 Beijing time, triggered every 29 minutes
+    - cron: '*/29 0-15 * * ?'     # Beijing time 8:00-23:59, triggered every 29 minutes
 
 jobs:
   curl-my-site:
@@ -16,6 +16,6 @@ jobs:
        - name: 'xecute command'
          env:
            MY_SITE: ${{ secrets.SITE }}
-         # 向站点发送 GET 请求
+         # Send a GET request to the site
          run: |                                   
            curl $MY_SITE
