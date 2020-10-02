@@ -9,32 +9,32 @@ on:
     - 'v*'
   #  branches: 
   #    - master
-  schedule: # Github Actions automatic running time
+  schedule: 
     - cron: "*/18 0-15 * * *"
   watch:
     types: [started]
    
 jobs:
   build:
-    runs-on: ubuntu-latest   # Run on Operate system
+    runs-on: ubuntu-latest   
     if: github.event.repository.owner.id == github.event.sender.id  # When you click Star to the warehouse, trigger the Github Action to run
     steps:
     - name: Checkout
       uses: actions/checkout@master
-    - name: Set up Python   # Install Python
+    - name: Set up Python  
       uses: actions/setup-python@v1
       with:
-        python-version: 3.8   # Python Version
-    - name: Install requests # Install requests
+        python-version: 3.8  
+    - name: Install requests 
       run: |
         pip install requests
-    - name: Waking  # Read the site information
+    - name: Waking  
       env: 
-        $CONFIG_SITE: ${{ secrets.Site }} # Read Valine comment backend address
+        $CONFIG_SITE: ${{ secrets.Site }} 
       run: | 
         python run.py ${{ secrets.Site }}
         echo `date +"%Y-%m-%d %H:%M:%S"` begin > time.log
-    - name: Commit # Commit the running log to the Github repository
+    - name: Commit 
       run: |
         git config --global user.email AutoWakeUp@email.com
         git config --global user.name AutoWakeUp
